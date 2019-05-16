@@ -28,7 +28,7 @@ namespace VideoGamesDB.Tabs
 				tabModel.Bookmarks = new BookmarkCollection(project);
 			}
 
-			public override void Load()
+			public override void Load(Call call)
 			{
 				ItemCollection<TaskCreator> actions = new ItemCollection<TaskCreator>();
 				database = new Database();
