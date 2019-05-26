@@ -10,7 +10,7 @@ namespace VideoGamesDB.Start.Avalonia
 		static void Main(string[] args)
 		{
 			OxyPlotModule.EnsureLoaded();
-			AppBuilder builder = AppBuilder.Configure<App>().UsePlatformDetect();
+			AppBuilder builder = AppBuilder.Configure<App>().UsePlatformDetect().UseDataGrid();
 
 			builder.BeforeStarting(_ => OxyPlotModule.Initialize());
 
@@ -20,6 +20,7 @@ namespace VideoGamesDB.Start.Avalonia
 		public static AppBuilder BuildAvaloniaApp()
 			=> AppBuilder.Configure<App>()
 				.UsePlatformDetect()
+				.UseDataGrid()
 				.BeforeStarting(_ => OxyPlotModule.Initialize())
 				.LogToDebug();
 	}

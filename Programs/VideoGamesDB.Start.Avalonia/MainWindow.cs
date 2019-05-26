@@ -16,6 +16,7 @@ namespace VideoGamesDB.Start.Avalonia
 			Project project = new Project(projectPath, typeof(MainWindow).Namespace);
 
 			LoadProject(project);
+			AddClipBoardButtons();
 
 			AddTabView(new TabVideoGamesDB.Instance(project));
 		}
