@@ -9,7 +9,7 @@ VideoGamesDB is a demo program that demonstrates the [Atlas](https://github.com/
 * Custom serializer that can save & load any object without any extra code
 * Follow tabs 20 or more levels deep. Your view will scroll as needed
 
-![Zelda](/Images/Screenshots/Zelda.png)
+![Zelda](/Images/Screenshots/Pyschonauts.png)
 
 
 * [Setup](Docs/Setup.md)
