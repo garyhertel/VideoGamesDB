@@ -6,19 +6,30 @@ namespace VideoGamesDB.Start.Avalonia
 {
 	public class MainWindow : BaseWindow
 	{
-		public MainWindow() : base()
+		public MainWindow() : base(LoadProject())
 		{
-			LoadProject(ProjectSettings.DefaultProjectPath);
-		}
-
-		public void LoadProject(string projectPath)
-		{
-			Project project = new Project(projectPath, typeof(MainWindow).Namespace);
-
-			LoadProject(project);
 			AddClipBoardButtons();
 
-			AddTabView(new TabVideoGamesDB.Instance(project));
+			AddTabView(new TabVideoGamesDB());
+		}
+
+		public static Project LoadProject()
+		{
+			var projectSettings = new ProjectSettings()
+			{
+				Name = "VideoGamesDB",
+				Version = "1",
+				DataVersion = "1",
+				LinkType = "atlas",
+			};
+			var userSettings = new UserSettings()
+			{
+				ProjectPath = UserSettings.DefaultProjectPath,
+			};
+			Project project = new Project(projectSettings, userSettings);
+			return project;
+
+			//Project project = new Project(projectPath, typeof(MainWindow).Namespace);
 		}
 	}
 }

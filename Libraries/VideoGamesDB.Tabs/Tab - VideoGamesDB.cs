@@ -12,53 +12,27 @@ namespace VideoGamesDB.Tabs
 
 		public class Instance : TabInstance
 		{
-			public Database database = null;
-
-			public Instance()
-			{
-			}
-
-			public Instance(Project project)
-			{
-				this.project = project;
-				LoadDefaultBookmark();
-
-				tabModel.Name = "Video Games DB";
-
-				tabModel.Bookmarks = new BookmarkCollection(project);
-			}
+			public Database database;
 
 			public override void Load(Call call)
 			{
-				ItemCollection<TaskCreator> actions = new ItemCollection<TaskCreator>();
+				LoadDatabase();
+
+				tabModel.Items = new ItemCollection<ListItem>()
+				{
+					//new ListItem("Platforms", new TabPlatforms()),
+					new ListItem("Database", new TabDatabase(database)),
+					new ListItem("Test", new TabTest()),
+				};
+			}
+
+			private void LoadDatabase()
+			{
 				database = new Database();
 				var view = new ReleaseData.View();
 				view.Load(taskInstance.call);
 				database.Load(view.Items);
-				/*if (database == null)
-				{
-					actions.Add(new TaskDelegate("Load", LoadDatabase, true));
-				}
-				else*/
-				{
-					tabModel.Items = new ItemCollection<ListItem>()
-					{
-						//new ListItem("Platforms", new TabPlatforms()),
-						new ListItem("Database", database),
-						new ListItem("Test", new TabTest()),
-					};
-					//tabModel.AddObject(database);
-					//tabModel.Items = database.Items;
-				}
-				tabModel.Actions = actions;
 			}
-
-			/*private void LoadDatabase(Call call)
-			{
-				database = new GameData.View();
-				database.Load(call);
-				Reload();
-			}*/
 		}
 	}
 }
