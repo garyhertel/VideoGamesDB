@@ -10,7 +10,7 @@ namespace VideoGamesDB.Start.Avalonia
 		{
 			AddClipBoardButtons();
 
-			AddTabView(new TabVideoGamesDB());
+			AddTab(new TabVideoGamesDB());
 		}
 
 		public static Project LoadProject()
@@ -28,8 +28,6 @@ namespace VideoGamesDB.Start.Avalonia
 			};
 			Project project = new Project(projectSettings, userSettings);
 			return project;
-
-			//Project project = new Project(projectPath, typeof(MainWindow).Namespace);
 		}
 	}
 }
