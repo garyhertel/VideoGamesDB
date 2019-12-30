@@ -22,7 +22,7 @@ namespace VideoGamesDB.Tabs
 				{
 					//new ListItem("Platforms", new TabPlatforms()),
 					new ListItem("Database", new TabDatabase(database)),
-					new ListItem("Charts", GetPublisherChart()),
+					new ListItem("Charts", new TabVideoGameCharts(database)),
 					new ListItem("Test", new TabTest()),
 				};
 			}
@@ -34,35 +34,6 @@ namespace VideoGamesDB.Tabs
 				view.Load(taskInstance.call);
 				database.Load(view.Items);
 			}
-
-			private object GetPublisherChart()
-			{
-				var listSeries = new ListSeries("Sales", database.ReleaseViews, nameof(ReleaseView.YearOfRelease), nameof(ReleaseView.Global_Sales))
-				{
-					xBinSize = 1,
-					// Dimensions, allow selecting multiple
-					//yPropertyName = nameof(ReleaseData.Platform),
-					//yPropertyName = nameof(ReleaseData.Genre),
-					//yPropertyName = nameof(ReleaseData.Publisher),
-					//yPropertyName = nameof(ReleaseData.Developer),
-				};
-				var chartSettings = new ChartSettings();
-				chartSettings.AddSeries(listSeries);
-				//return chartSettings;
-				TabModel tabModel = new TabModel();
-				tabModel.AddObject(chartSettings);
-				return tabModel;
-			}
 		}
 	}
 }
-
-/*
-
-Charts
-	Sales by platform
-	Sales by publisher
-	Sales by publisher & platform
-	Sales by region
-	User Score per 
-*/
