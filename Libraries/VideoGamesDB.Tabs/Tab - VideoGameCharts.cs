@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Atlas.Core;
 using Atlas.Tabs;
-using Atlas.Tabs.Test;
 
 namespace VideoGamesDB.Tabs
 {
