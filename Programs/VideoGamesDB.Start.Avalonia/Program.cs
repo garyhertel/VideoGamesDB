@@ -7,12 +7,12 @@ namespace VideoGamesDB.Start.Avalonia
 {
 	class Program
 	{
-		static void Main(string[] args)
+		static int Main(string[] args)
 		{
 			OxyPlotModule.EnsureLoaded();
 			AppBuilder builder = BuildAvaloniaApp();
 
-			builder.Start<MainWindow>();
+			return builder.StartWithClassicDesktopLifetime(args);
 		}
 
 		public static AppBuilder BuildAvaloniaApp()
