@@ -54,7 +54,7 @@ namespace VideoGamesDB.Tabs
 
 			public override string ToString()
 			{
-				return Items.ObjectToString();
+				return Items.Formatted();
 			}
 		}
 	}

@@ -1,6 +1,7 @@
 ﻿using Atlas.Tabs;
 using Atlas.GUI.Avalonia;
 using VideoGamesDB.Tabs;
+using System;
 
 namespace VideoGamesDB.Start.Avalonia
 {
@@ -8,8 +9,6 @@ namespace VideoGamesDB.Start.Avalonia
 	{
 		public MainWindow() : base(LoadProject())
 		{
-			AddClipBoardButtons();
-
 			AddTab(new TabVideoGamesDB());
 		}
 
@@ -18,9 +17,9 @@ namespace VideoGamesDB.Start.Avalonia
 			var projectSettings = new ProjectSettings()
 			{
 				Name = "VideoGamesDB",
-				Version = "1",
-				DataVersion = "1",
 				LinkType = "atlas",
+				Version = new Version(1, 0),
+				DataVersion = new Version(1, 0),
 			};
 			var userSettings = new UserSettings()
 			{
