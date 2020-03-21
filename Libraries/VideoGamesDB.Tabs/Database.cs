@@ -60,6 +60,13 @@ namespace VideoGamesDB.Tabs
 				developer.Titles.Add(gameTitle);
 				genre.Titles.Add(gameTitle);
 			}
+
+			ReleaseDatas = ReleaseDatas.OrderBy(g => g.Name).ToList();
+			ReleaseViews = ReleaseViews.OrderBy(g => g.Name).ToList();
+			Platforms = Platforms.OrderBy(g => g.Name).ToList();
+			Genres = Genres.OrderBy(g => g.Name).ToList();
+			Developers = Developers.OrderBy(g => g.Name).ToList();
+			Publishers = Publishers.OrderBy(g => g.Name).ToList();
 			Games = Games.OrderBy(g => g.Name).ToList();
 		}
 
