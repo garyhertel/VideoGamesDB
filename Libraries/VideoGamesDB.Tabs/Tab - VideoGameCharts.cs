@@ -25,9 +25,9 @@ namespace VideoGamesDB.Tabs
 				this.tab = tab;
 			}
 
-			public override void Load(Call call)
+			public override void Load(Call call, TabModel model)
 			{
-				tabModel.Items = new ItemCollection<ListItem>()
+				model.Items = new ItemCollection<ListItem>()
 				{
 					new ListItem("Platforms", GetPlatformChart()),
 					new ListItem("Publisher", GetPublisherChart()),
@@ -44,9 +44,10 @@ namespace VideoGamesDB.Tabs
 
 				var chartSettings = new ChartSettings();
 				chartSettings.AddGroup(listGroup);
-				TabModel tabModel = new TabModel();
-				tabModel.AddObject(chartSettings);
-				return tabModel;
+				TabModel model = new TabModel();
+				model.MinDesiredWidth = 1000;
+				model.AddObject(chartSettings);
+				return model;
 			}
 
 			private object GetPublisherChart()
@@ -63,9 +64,10 @@ namespace VideoGamesDB.Tabs
 				var chartSettings = new ChartSettings();
 				chartSettings.AddSeries(listSeries);
 				//return chartSettings;
-				TabModel tabModel = new TabModel();
-				tabModel.AddObject(chartSettings);
-				return tabModel;
+				TabModel model = new TabModel();
+				model.MinDesiredWidth = 1000;
+				model.AddObject(chartSettings);
+				return model;
 			}
 		}
 	}

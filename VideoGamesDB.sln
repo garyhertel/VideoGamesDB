@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Atlas", "Atlas", "{D27039B8
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atlas.Core", "Imports\Atlas\Libraries\Atlas.Core\Atlas.Core.csproj", "{81102CA1-17C9-4A46-9314-E83BB4E54EF4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atlas.GUI.Avalonia", "Imports\Atlas\Libraries\Atlas.GUI.Avalonia\Atlas.GUI.Avalonia.csproj", "{8B0D447E-A6B8-4ADF-BA6C-525BFCCBE63E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atlas.UI.Avalonia", "Imports\Atlas\Libraries\Atlas.UI.Avalonia\Atlas.UI.Avalonia.csproj", "{8B0D447E-A6B8-4ADF-BA6C-525BFCCBE63E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atlas.Tabs", "Imports\Atlas\Libraries\Atlas.Tabs\Atlas.Tabs.csproj", "{259981A6-3094-4F35-9EA2-9AA18EFA07E2}"
 EndProject

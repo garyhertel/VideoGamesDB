@@ -1,5 +1,5 @@
 ﻿using Atlas.Tabs;
-using Atlas.GUI.Avalonia;
+using Atlas.UI.Avalonia;
 using VideoGamesDB.Tabs;
 using System;
 

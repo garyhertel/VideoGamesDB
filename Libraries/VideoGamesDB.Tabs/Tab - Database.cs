@@ -25,11 +25,11 @@ namespace VideoGamesDB.Tabs
 				this.tab = tab;
 			}
 
-			public override void Load(Call call)
+			public override void Load(Call call, TabModel model)
 			{
-				tabModel.AddData(tab.database);
+				model.AddData(tab.database);
 
-				/*tabModel.Items = new ItemCollection<ListItem>()
+				/*model.Items = new ItemCollection<ListItem>()
 				{
 					//new ListItem("Platforms", new TabPlatforms()),
 					new ListItem("Database", database),

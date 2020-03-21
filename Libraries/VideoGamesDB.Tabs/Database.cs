@@ -60,6 +60,7 @@ namespace VideoGamesDB.Tabs
 				developer.Titles.Add(gameTitle);
 				genre.Titles.Add(gameTitle);
 			}
+			Games = Games.OrderBy(g => g.Name).ToList();
 		}
 
 		private Platform AddPlatform(ReleaseView releaseView)
