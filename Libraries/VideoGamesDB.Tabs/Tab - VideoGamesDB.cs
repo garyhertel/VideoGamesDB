@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Atlas.Core;
+﻿using Atlas.Core;
 using Atlas.Tabs;
 using Atlas.Tabs.Test;
 
@@ -16,7 +14,7 @@ namespace VideoGamesDB.Tabs
 
 			public override void Load(Call call, TabModel model)
 			{
-				LoadDatabase();
+				LoadDatabase(call);
 
 				model.Items = new ItemCollection<ListItem>()
 				{
@@ -27,11 +25,11 @@ namespace VideoGamesDB.Tabs
 				};
 			}
 
-			private void LoadDatabase()
+			private void LoadDatabase(Call call)
 			{
 				database = new Database();
 				var view = new ReleaseData.View();
-				view.Load(taskInstance.call);
+				view.Load(call);
 				database.Load(view.Items);
 			}
 		}

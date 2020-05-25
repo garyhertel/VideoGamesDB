@@ -44,7 +44,7 @@ namespace VideoGamesDB.Tabs
 			ReleaseDatas = Items;
 			foreach (ReleaseData releaseData in Items)
 			{
-				ReleaseView releaseView = new ReleaseView(releaseData);
+				var releaseView = new ReleaseView(releaseData);
 				ReleaseViews.Add(releaseView);
 
 				Platform platform = AddPlatform(releaseView);
@@ -72,8 +72,7 @@ namespace VideoGamesDB.Tabs
 
 		private Platform AddPlatform(ReleaseView releaseView)
 		{
-			Platform platform;
-			if (!IdxPlatformNames.TryGetValue(releaseView.releaseData.Platform, out platform))
+			if (!IdxPlatformNames.TryGetValue(releaseView.releaseData.Platform, out Platform platform))
 			{
 				platform = new Platform()
 				{
@@ -89,8 +88,7 @@ namespace VideoGamesDB.Tabs
 
 		private GameTitle AddTitle(ReleaseView releaseView)
 		{
-			GameTitle gameTitle;
-			if (!IdxGameNames.TryGetValue(releaseView.Name, out gameTitle))
+			if (!IdxGameNames.TryGetValue(releaseView.Name, out GameTitle gameTitle))
 			{
 				gameTitle = new GameTitle()
 				{
@@ -106,8 +104,7 @@ namespace VideoGamesDB.Tabs
 
 		private Publisher AddPublisher(ReleaseView releaseView)
 		{
-			Publisher publisher;
-			if (!IdxPublisherNames.TryGetValue(releaseView.releaseData.Publisher, out publisher))
+			if (!IdxPublisherNames.TryGetValue(releaseView.releaseData.Publisher, out Publisher publisher))
 			{
 				publisher = new Publisher()
 				{
@@ -123,8 +120,7 @@ namespace VideoGamesDB.Tabs
 
 		private Developer AddDeveloper(ReleaseView releaseView)
 		{
-			Developer developer;
-			if (!IdxDeveloperNames.TryGetValue(releaseView.releaseData.Developer, out developer))
+			if (!IdxDeveloperNames.TryGetValue(releaseView.releaseData.Developer, out Developer developer))
 			{
 				developer = new Developer()
 				{
@@ -140,8 +136,7 @@ namespace VideoGamesDB.Tabs
 
 		private Genre AddGenre(ReleaseView releaseView)
 		{
-			Genre genre;
-			if (!IdxGenreNames.TryGetValue(releaseView.releaseData.Genre, out genre))
+			if (!IdxGenreNames.TryGetValue(releaseView.releaseData.Genre, out Genre genre))
 			{
 				genre = new Genre()
 				{

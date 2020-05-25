@@ -25,7 +25,7 @@ namespace VideoGamesDB.Start.Avalonia
 			{
 				ProjectPath = UserSettings.DefaultProjectPath,
 			};
-			Project project = new Project(projectSettings, userSettings);
+			var project = new Project(projectSettings, userSettings);
 			return project;
 		}
 	}

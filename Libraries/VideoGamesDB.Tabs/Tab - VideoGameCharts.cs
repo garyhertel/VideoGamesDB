@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Atlas.Core;
+﻿using Atlas.Core;
 using Atlas.Tabs;
 
 namespace VideoGamesDB.Tabs
@@ -44,8 +42,10 @@ namespace VideoGamesDB.Tabs
 
 				var chartSettings = new ChartSettings();
 				chartSettings.AddGroup(listGroup);
-				TabModel model = new TabModel();
-				model.MinDesiredWidth = 1000;
+				var model = new TabModel()
+				{
+					MinDesiredWidth = 1000,
+				};
 				model.AddObject(chartSettings);
 				return model;
 			}
@@ -64,8 +64,10 @@ namespace VideoGamesDB.Tabs
 				var chartSettings = new ChartSettings();
 				chartSettings.AddSeries(listSeries);
 				//return chartSettings;
-				TabModel model = new TabModel();
-				model.MinDesiredWidth = 1000;
+				var model = new TabModel()
+				{
+					MinDesiredWidth = 1000,
+				};
 				model.AddObject(chartSettings);
 				return model;
 			}

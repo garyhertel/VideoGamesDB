@@ -36,8 +36,7 @@ namespace VideoGamesDB.Tabs
 		{
 			this.releaseData = releaseData;
 
-			int year;
-			if (int.TryParse(releaseData.Year_of_Release, out year))
+			if (int.TryParse(releaseData.Year_of_Release, out int year))
 				YearOfRelease = year;
 		}
 

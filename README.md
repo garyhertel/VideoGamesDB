@@ -1,6 +1,6 @@
 # VideoGamesDB
 ---
-VideoGamesDB is a demo program that demonstrates the [Atlas](https://github.com/garyhertel/Atlas) GUI framework using the AvaloniaUI library. 
+VideoGamesDB is a demo program that demonstrates the [Atlas](https://github.com/garyhertel/Atlas) UI framework using the AvaloniaUI library. 
 
 # Atlas
 * Atlas is a tool for exploring multiple paths of a tree at once
