@@ -29,6 +29,8 @@ namespace VideoGamesDB.Tabs
 				{
 					new ListItem("Platforms", GetPlatformChart()),
 					new ListItem("Publisher", GetPublisherChart()),
+					new ListItem("Developer", GetDeveloperChart()),
+					new ListItem("Sales", GetSalesChart()),
 				};
 			}
 
@@ -40,8 +42,7 @@ namespace VideoGamesDB.Tabs
 				};
 				listGroup.AddDimensions(tab.database.ReleaseViews, nameof(ReleaseView.Platform), nameof(ReleaseView.YearOfRelease), nameof(ReleaseView.Global_Sales));
 
-				var chartSettings = new ChartSettings();
-				chartSettings.AddGroup(listGroup);
+				var chartSettings = new ChartSettings(listGroup);
 				var model = new TabModel()
 				{
 					MinDesiredWidth = 1000,
@@ -51,6 +52,40 @@ namespace VideoGamesDB.Tabs
 			}
 
 			private object GetPublisherChart()
+			{
+				var listGroup = new ListGroup("Sales by Publisher")
+				{
+					xBinSize = 1,
+				};
+				listGroup.AddDimensions(tab.database.ReleaseViews, nameof(ReleaseView.Publisher), nameof(ReleaseView.YearOfRelease), nameof(ReleaseView.Global_Sales));
+
+				var chartSettings = new ChartSettings(listGroup);
+				var model = new TabModel()
+				{
+					MinDesiredWidth = 1000,
+				};
+				model.AddObject(chartSettings);
+				return model;
+			}
+
+			private object GetDeveloperChart()
+			{
+				var listGroup = new ListGroup("Sales by Developer")
+				{
+					xBinSize = 1,
+				};
+				listGroup.AddDimensions(tab.database.ReleaseViews, nameof(ReleaseView.Developer), nameof(ReleaseView.YearOfRelease), nameof(ReleaseView.Global_Sales));
+
+				var chartSettings = new ChartSettings(listGroup);
+				var model = new TabModel()
+				{
+					MinDesiredWidth = 1000,
+				};
+				model.AddObject(chartSettings);
+				return model;
+			}
+
+			private object GetSalesChart()
 			{
 				var listSeries = new ListSeries("Sales", tab.database.ReleaseViews, nameof(ReleaseView.YearOfRelease), nameof(ReleaseView.Global_Sales))
 				{

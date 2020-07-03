@@ -7,26 +7,17 @@ namespace VideoGamesDB.Start.Avalonia
 {
 	public class MainWindow : BaseWindow
 	{
-		public MainWindow() : base(LoadProject())
+		public MainWindow() : base(new Project(Settings))
 		{
 			AddTab(new TabVideoGamesDB());
 		}
 
-		public static Project LoadProject()
+		public static ProjectSettings Settings => new ProjectSettings()
 		{
-			var projectSettings = new ProjectSettings()
-			{
-				Name = "VideoGamesDB",
-				LinkType = "atlas",
-				Version = new Version(1, 0),
-				DataVersion = new Version(1, 0),
-			};
-			var userSettings = new UserSettings()
-			{
-				ProjectPath = UserSettings.DefaultProjectPath,
-			};
-			var project = new Project(projectSettings, userSettings);
-			return project;
-		}
+			Name = "VideoGamesDB",
+			LinkType = "VideoGamesDB",
+			Version = new Version(1, 0),
+			DataVersion = new Version(1, 0),
+		};
 	}
 }
