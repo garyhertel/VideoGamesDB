@@ -1,6 +1,7 @@
 ﻿using Atlas.Core;
 using Atlas.Tabs;
 using Atlas.Tabs.Test;
+using Atlas.UI.Avalonia.Controls;
 
 namespace VideoGamesDB.Tabs
 {
@@ -21,6 +22,7 @@ namespace VideoGamesDB.Tabs
 					//new ListItem("Platforms", new TabPlatforms()),
 					new ListItem("Database", new TabDatabase(database)),
 					new ListItem("Charts", new TabVideoGameCharts(database)),
+					new ListItem("Bookmarks", new TabBookmarks(Project)),
 					new ListItem("Test", new TabTest()),
 				};
 			}

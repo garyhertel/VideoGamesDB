@@ -156,10 +156,7 @@ namespace VideoGamesDB.Tabs
 		public string Name { get; set; }
 		public List<ReleaseView> Releases { get; set; } = new List<ReleaseView>();
 
-		public override string ToString()
-		{
-			return Name;
-		}
+		public override string ToString() => Name;
 	}
 
 	public class GameTitle
@@ -179,10 +176,7 @@ namespace VideoGamesDB.Tabs
 		public HashSet<GameTitle> Titles { get; set; } = new HashSet<GameTitle>();
 		public List<ReleaseView> Releases { get; set; } = new List<ReleaseView>();
 
-		public override string ToString()
-		{
-			return Name;
-		}
+		public override string ToString() => Name;
 	}
 
 	public class Developer
@@ -191,10 +185,7 @@ namespace VideoGamesDB.Tabs
 		public HashSet<GameTitle> Titles { get; set; } = new HashSet<GameTitle>();
 		public List<ReleaseView> Releases { get; set; } = new List<ReleaseView>();
 
-		public override string ToString()
-		{
-			return Name;
-		}
+		public override string ToString() => Name;
 	}
 
 	public class Genre
@@ -203,9 +194,6 @@ namespace VideoGamesDB.Tabs
 		public HashSet<GameTitle> Titles { get; set; } = new HashSet<GameTitle>();
 		public List<ReleaseView> Releases { get; set; } = new List<ReleaseView>();
 
-		public override string ToString()
-		{
-			return Name;
-		}
+		public override string ToString() => Name;
 	}
 }
