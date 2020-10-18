@@ -3,7 +3,7 @@ namespace VideoGamesDB.Tabs
 {
 	public class ReleaseView
 	{
-		public ReleaseData releaseData;
+		public ReleaseData ReleaseData;
 
 		public GameTitle Title { get; set; }
 		public Platform Platform { get; set; } // use serializer converters instead?
@@ -11,20 +11,18 @@ namespace VideoGamesDB.Tabs
 		public Publisher Publisher { get; set; }
 		public Developer Developer { get; set; }
 
-		public string Name => releaseData.Name;
+		public string Name => ReleaseData.Name;
 		public int? YearOfRelease { get; set; }
-		public decimal Global_Sales => releaseData.Global_Sales;
-		public decimal NA_Sales => releaseData.NA_Sales;
-		public decimal EU_Sales => releaseData.EU_Sales;
-		public decimal JP_Sales => releaseData.JP_Sales;
-		public decimal Other_Sales => releaseData.Other_Sales;
-		public int? Critic_Score => releaseData.Critic_Score;
-		public int? Critic_Count => releaseData.Critic_Count;
-		public string User_Score => releaseData.User_Score;
-		public int? User_Count => releaseData.User_Count;
-		public string Rating => releaseData.Rating;
-
-
+		public decimal Global_Sales => ReleaseData.Global_Sales;
+		public decimal NA_Sales => ReleaseData.NA_Sales;
+		public decimal EU_Sales => ReleaseData.EU_Sales;
+		public decimal JP_Sales => ReleaseData.JP_Sales;
+		public decimal Other_Sales => ReleaseData.Other_Sales;
+		public int? Critic_Score => ReleaseData.Critic_Score;
+		public int? Critic_Count => ReleaseData.Critic_Count;
+		public string User_Score => ReleaseData.User_Score;
+		public int? User_Count => ReleaseData.User_Count;
+		public string Rating => ReleaseData.Rating;
 
 		public ReleaseView()
 		{
@@ -34,7 +32,7 @@ namespace VideoGamesDB.Tabs
 		// use property links without subtype instead?
 		public ReleaseView(ReleaseData releaseData)
 		{
-			this.releaseData = releaseData;
+			ReleaseData = releaseData;
 
 			if (int.TryParse(releaseData.Year_of_Release, out int year))
 				YearOfRelease = year;

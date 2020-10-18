@@ -7,27 +7,27 @@ namespace VideoGamesDB.Tabs
 {
 	public class TabDatabase : ITab
 	{
-		public Database database;
+		public Database Database;
 
 		public TabDatabase(Database database)
 		{
-			this.database = database;
+			Database = database;
 		}
 
-		public TabInstance Create() { return new Instance(this); }
+		public TabInstance Create() => new Instance(this);
 
 		public class Instance : TabInstance
 		{
-			public TabDatabase tab;
+			public TabDatabase Tab;
 
 			public Instance(TabDatabase tab)
 			{
-				this.tab = tab;
+				Tab = tab;
 			}
 
 			public override void Load(Call call, TabModel model)
 			{
-				model.AddData(tab.database);
+				model.AddData(Tab.Database);
 
 				/*model.Items = new ItemCollection<ListItem>()
 				{

@@ -17,11 +17,11 @@ namespace VideoGamesDB.Tabs
 		public string Publisher { get; set; }
 		public string Developer { get; set; }
 
-		public Decimal Global_Sales { get; set; }
-		public Decimal NA_Sales { get; set; }
-		public Decimal EU_Sales { get; set; }
-		public Decimal JP_Sales { get; set; }
-		public Decimal Other_Sales { get; set; }
+		public decimal Global_Sales { get; set; }
+		public decimal NA_Sales { get; set; }
+		public decimal EU_Sales { get; set; }
+		public decimal JP_Sales { get; set; }
+		public decimal Other_Sales { get; set; }
 
 		public int? Critic_Score { get; set; }
 		public int? Critic_Count { get; set; }

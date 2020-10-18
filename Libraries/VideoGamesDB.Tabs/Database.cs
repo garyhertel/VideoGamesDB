@@ -72,11 +72,11 @@ namespace VideoGamesDB.Tabs
 
 		private Platform AddPlatform(ReleaseView releaseView)
 		{
-			if (!IdxPlatformNames.TryGetValue(releaseView.releaseData.Platform, out Platform platform))
+			if (!IdxPlatformNames.TryGetValue(releaseView.ReleaseData.Platform, out Platform platform))
 			{
 				platform = new Platform()
 				{
-					Name = releaseView.releaseData.Platform,
+					Name = releaseView.ReleaseData.Platform,
 				};
 				IdxPlatformNames.Add(platform.Name, platform);
 				Platforms.Add(platform);
@@ -104,11 +104,11 @@ namespace VideoGamesDB.Tabs
 
 		private Publisher AddPublisher(ReleaseView releaseView)
 		{
-			if (!IdxPublisherNames.TryGetValue(releaseView.releaseData.Publisher, out Publisher publisher))
+			if (!IdxPublisherNames.TryGetValue(releaseView.ReleaseData.Publisher, out Publisher publisher))
 			{
 				publisher = new Publisher()
 				{
-					Name = releaseView.releaseData.Publisher,
+					Name = releaseView.ReleaseData.Publisher,
 				};
 				IdxPublisherNames.Add(publisher.Name, publisher);
 				Publishers.Add(publisher);
@@ -120,11 +120,11 @@ namespace VideoGamesDB.Tabs
 
 		private Developer AddDeveloper(ReleaseView releaseView)
 		{
-			if (!IdxDeveloperNames.TryGetValue(releaseView.releaseData.Developer, out Developer developer))
+			if (!IdxDeveloperNames.TryGetValue(releaseView.ReleaseData.Developer, out Developer developer))
 			{
 				developer = new Developer()
 				{
-					Name = releaseView.releaseData.Developer,
+					Name = releaseView.ReleaseData.Developer,
 				};
 				IdxDeveloperNames.Add(developer.Name, developer);
 				Developers.Add(developer);
@@ -136,11 +136,11 @@ namespace VideoGamesDB.Tabs
 
 		private Genre AddGenre(ReleaseView releaseView)
 		{
-			if (!IdxGenreNames.TryGetValue(releaseView.releaseData.Genre, out Genre genre))
+			if (!IdxGenreNames.TryGetValue(releaseView.ReleaseData.Genre, out Genre genre))
 			{
 				genre = new Genre()
 				{
-					Name = releaseView.releaseData.Genre,
+					Name = releaseView.ReleaseData.Genre,
 				};
 				IdxGenreNames.Add(genre.Name, genre);
 				Genres.Add(genre);

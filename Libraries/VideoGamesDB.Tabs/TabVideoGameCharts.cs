@@ -5,22 +5,22 @@ namespace VideoGamesDB.Tabs
 {
 	public class TabVideoGameCharts : ITab
 	{
-		private Database database;
+		public Database Database;
 
 		public TabVideoGameCharts(Database database)
 		{
-			this.database = database;
+			Database = database;
 		}
 
-		public TabInstance Create() { return new Instance(this); }
+		public TabInstance Create() => new Instance(this);
 
 		public class Instance : TabInstance
 		{
-			private TabVideoGameCharts tab;
+			private TabVideoGameCharts Tab;
 
 			public Instance(TabVideoGameCharts tab)
 			{
-				this.tab = tab;
+				Tab = tab;
 			}
 
 			public override void Load(Call call, TabModel model)
@@ -38,9 +38,9 @@ namespace VideoGamesDB.Tabs
 			{
 				var listGroup = new ListGroup("Sales by Platform")
 				{
-					xBinSize = 1,
+					XBinSize = 1,
 				};
-				listGroup.AddDimensions(tab.database.ReleaseViews, nameof(ReleaseView.Platform), nameof(ReleaseView.YearOfRelease), nameof(ReleaseView.Global_Sales));
+				listGroup.AddDimensions(Tab.Database.ReleaseViews, nameof(ReleaseView.Platform), nameof(ReleaseView.YearOfRelease), nameof(ReleaseView.Global_Sales));
 
 				var chartSettings = new ChartSettings(listGroup);
 				var model = new TabModel()
@@ -55,9 +55,9 @@ namespace VideoGamesDB.Tabs
 			{
 				var listGroup = new ListGroup("Sales by Publisher")
 				{
-					xBinSize = 1,
+					XBinSize = 1,
 				};
-				listGroup.AddDimensions(tab.database.ReleaseViews, nameof(ReleaseView.Publisher), nameof(ReleaseView.YearOfRelease), nameof(ReleaseView.Global_Sales));
+				listGroup.AddDimensions(Tab.Database.ReleaseViews, nameof(ReleaseView.Publisher), nameof(ReleaseView.YearOfRelease), nameof(ReleaseView.Global_Sales));
 
 				var chartSettings = new ChartSettings(listGroup);
 				var model = new TabModel()
@@ -72,9 +72,9 @@ namespace VideoGamesDB.Tabs
 			{
 				var listGroup = new ListGroup("Sales by Developer")
 				{
-					xBinSize = 1,
+					XBinSize = 1,
 				};
-				listGroup.AddDimensions(tab.database.ReleaseViews, nameof(ReleaseView.Developer), nameof(ReleaseView.YearOfRelease), nameof(ReleaseView.Global_Sales));
+				listGroup.AddDimensions(Tab.Database.ReleaseViews, nameof(ReleaseView.Developer), nameof(ReleaseView.YearOfRelease), nameof(ReleaseView.Global_Sales));
 
 				var chartSettings = new ChartSettings(listGroup);
 				var model = new TabModel()
@@ -87,9 +87,9 @@ namespace VideoGamesDB.Tabs
 
 			private object GetSalesChart()
 			{
-				var listSeries = new ListSeries("Sales", tab.database.ReleaseViews, nameof(ReleaseView.YearOfRelease), nameof(ReleaseView.Global_Sales))
+				var listSeries = new ListSeries("Sales", Tab.Database.ReleaseViews, nameof(ReleaseView.YearOfRelease), nameof(ReleaseView.Global_Sales))
 				{
-					xBinSize = 1,
+					XBinSize = 1,
 					// Dimensions, allow selecting multiple
 					//yPropertyName = nameof(ReleaseData.Platform),
 					//yPropertyName = nameof(ReleaseData.Genre),

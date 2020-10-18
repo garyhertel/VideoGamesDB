@@ -7,11 +7,11 @@ namespace VideoGamesDB.Tabs
 {
 	public class TabVideoGamesDB : ITab
 	{
-		public TabInstance Create() { return new Instance(); }
+		public TabInstance Create() => new Instance();
 
 		public class Instance : TabInstance
 		{
-			public Database database;
+			public Database Database;
 
 			public override void Load(Call call, TabModel model)
 			{
@@ -20,8 +20,8 @@ namespace VideoGamesDB.Tabs
 				model.Items = new ItemCollection<ListItem>()
 				{
 					//new ListItem("Platforms", new TabPlatforms()),
-					new ListItem("Database", new TabDatabase(database)),
-					new ListItem("Charts", new TabVideoGameCharts(database)),
+					new ListItem("Database", new TabDatabase(Database)),
+					new ListItem("Charts", new TabVideoGameCharts(Database)),
 					new ListItem("Bookmarks", new TabBookmarks(Project)),
 					new ListItem("Test", new TabTest()),
 				};
@@ -29,10 +29,10 @@ namespace VideoGamesDB.Tabs
 
 			private void LoadDatabase(Call call)
 			{
-				database = new Database();
+				Database = new Database();
 				var view = new ReleaseData.View();
 				view.Load(call);
-				database.Load(view.Items);
+				Database.Load(view.Items);
 			}
 		}
 	}
