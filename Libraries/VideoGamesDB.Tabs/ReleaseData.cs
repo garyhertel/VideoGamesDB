@@ -38,14 +38,14 @@ namespace VideoGamesDB.Tabs
 
 		public class View
 		{
-			public const string zipFilename = "video-game-sales-with-ratings.zip";
-			public const string filename = "Assets/Video_Games_Sales_as_at_22_Dec_2016.csv";
+			public const string ZipFilename = "video-game-sales-with-ratings.zip";
+			public const string Filename = "Assets/Video_Games_Sales_as_at_22_Dec_2016.csv";
 
 			public List<ReleaseData> Items { get; set; } = new List<ReleaseData>();
 
 			public void Load(Call call)
 			{
-				using (var reader = new StreamReader(filename))
+				using (var reader = new StreamReader(Filename))
 				using (var csv = new CsvReader(reader))
 				{
 					Items = csv.GetRecords<ReleaseData>().ToList();

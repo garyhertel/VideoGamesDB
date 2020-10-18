@@ -164,10 +164,7 @@ namespace VideoGamesDB.Tabs
 		public string Name { get; set; }
 		public List<ReleaseView> Releases { get; set; } = new List<ReleaseView>();
 
-		public override string ToString()
-		{
-			return Name;
-		}
+		public override string ToString() => Name;
 	}
 
 	public class Publisher

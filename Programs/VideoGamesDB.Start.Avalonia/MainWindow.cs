@@ -1,7 +1,7 @@
 ﻿using Atlas.Tabs;
 using Atlas.UI.Avalonia;
-using VideoGamesDB.Tabs;
 using System;
+using VideoGamesDB.Tabs;
 
 namespace VideoGamesDB.Start.Avalonia
 {

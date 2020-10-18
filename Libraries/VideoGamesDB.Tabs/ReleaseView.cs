@@ -24,6 +24,8 @@ namespace VideoGamesDB.Tabs
 		public int? User_Count => ReleaseData.User_Count;
 		public string Rating => ReleaseData.Rating;
 
+		public override string ToString() => Name;
+
 		public ReleaseView()
 		{
 		}
@@ -36,11 +38,6 @@ namespace VideoGamesDB.Tabs
 
 			if (int.TryParse(releaseData.Year_of_Release, out int year))
 				YearOfRelease = year;
-		}
-
-		public override string ToString()
-		{
-			return Name;
 		}
 	}
 }
