@@ -1,5 +1,4 @@
 ﻿using Avalonia;
-using Avalonia.Logging.Serilog;
 using OxyPlot.Avalonia;
 
 namespace VideoGamesDB.Start.Avalonia
@@ -17,6 +16,6 @@ namespace VideoGamesDB.Start.Avalonia
 		public static AppBuilder BuildAvaloniaApp()
 			=> AppBuilder.Configure<App>()
 				.UsePlatformDetect()
-				.LogToDebug();
+				.LogToTrace();
 	}
 }
