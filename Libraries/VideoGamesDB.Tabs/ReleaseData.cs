@@ -31,10 +31,7 @@ namespace VideoGamesDB.Tabs
 
 		public string Rating { get; set; }
 
-		public override string ToString()
-		{
-			return Name;
-		}
+		public override string ToString() => Name;
 
 		public class View
 		{
@@ -43,6 +40,8 @@ namespace VideoGamesDB.Tabs
 
 			public List<ReleaseData> Items { get; set; } = new List<ReleaseData>();
 
+			public override string ToString() => Items.Formatted();
+
 			public void Load(Call call)
 			{
 				using (var reader = new StreamReader(Filename))
@@ -50,11 +49,6 @@ namespace VideoGamesDB.Tabs
 				{
 					Items = csv.GetRecords<ReleaseData>().ToList();
 				}
-			}
-
-			public override string ToString()
-			{
-				return Items.Formatted();
 			}
 		}
 	}

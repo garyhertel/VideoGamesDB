@@ -34,11 +34,6 @@ namespace VideoGamesDB.Tabs
 		[HiddenRow]
 		public Dictionary<string, Developer> IdxDeveloperNames { get; set; } = new Dictionary<string, Developer>();
 
-		/*public override string ToString()
-		{
-			return Name;
-		}*/
-
 		public void Load(List<ReleaseData> Items)
 		{
 			ReleaseDatas = Items;
