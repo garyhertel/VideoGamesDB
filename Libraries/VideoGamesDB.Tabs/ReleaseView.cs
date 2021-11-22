@@ -13,11 +13,11 @@ namespace VideoGamesDB.Tabs
 
 		public string Name => ReleaseData.Name;
 		public int? YearOfRelease { get; set; }
-		public decimal Global_Sales => ReleaseData.Global_Sales;
-		public decimal NA_Sales => ReleaseData.NA_Sales;
-		public decimal EU_Sales => ReleaseData.EU_Sales;
-		public decimal JP_Sales => ReleaseData.JP_Sales;
-		public decimal Other_Sales => ReleaseData.Other_Sales;
+		public double Global_Sales => ReleaseData.Global_Sales * 1000000;
+		public double NA_Sales => ReleaseData.NA_Sales * 1000000;
+		public double EU_Sales => ReleaseData.EU_Sales * 1000000;
+		public double JP_Sales => ReleaseData.JP_Sales * 1000000;
+		public double Other_Sales => ReleaseData.Other_Sales * 1000000;
 		public int? Critic_Score => ReleaseData.Critic_Score;
 		public int? Critic_Count => ReleaseData.Critic_Count;
 		public string User_Score => ReleaseData.User_Score;

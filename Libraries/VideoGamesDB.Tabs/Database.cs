@@ -1,9 +1,6 @@
 ﻿using Atlas.Core;
-using Atlas.Extensions;
-using CsvHelper;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
 namespace VideoGamesDB.Tabs
@@ -12,7 +9,7 @@ namespace VideoGamesDB.Tabs
 	{
 		public List<GameTitle> Games { get; set; } = new List<GameTitle>();
 		[HiddenRow]
-		public Dictionary<string, GameTitle> IdxGameNames { get; set; } = new Dictionary<string, GameTitle>();
+		public SortedDictionary<string, GameTitle> IdxGameNames { get; set; } = new SortedDictionary<string, GameTitle>();
 
 		public List<ReleaseData> ReleaseDatas { get; set; } = new List<ReleaseData>();
 
@@ -20,7 +17,7 @@ namespace VideoGamesDB.Tabs
 
 		public List<Platform> Platforms { get; set; } = new List<Platform>();
 		[HiddenRow]
-		public Dictionary<string, Platform> IdxPlatformNames { get; set; } = new Dictionary<string, Platform>();
+		public SortedDictionary<string, Platform> IdxPlatformNames { get; set; } = new SortedDictionary<string, Platform>();
 
 		public List<Genre> Genres { get; set; } = new List<Genre>();
 		[HiddenRow]
@@ -28,11 +25,11 @@ namespace VideoGamesDB.Tabs
 
 		public List<Publisher> Publishers { get; set; } = new List<Publisher>();
 		[HiddenRow]
-		public Dictionary<string, Publisher> IdxPublisherNames { get; set; } = new Dictionary<string, Publisher>();
+		public SortedDictionary<string, Publisher> IdxPublisherNames { get; set; } = new SortedDictionary<string, Publisher>();
 
 		public List<Developer> Developers { get; set; } = new List<Developer>();
 		[HiddenRow]
-		public Dictionary<string, Developer> IdxDeveloperNames { get; set; } = new Dictionary<string, Developer>();
+		public SortedDictionary<string, Developer> IdxDeveloperNames { get; set; } = new SortedDictionary<string, Developer>();
 
 		public void Load(List<ReleaseData> Items)
 		{
@@ -67,16 +64,18 @@ namespace VideoGamesDB.Tabs
 
 		private Platform AddPlatform(ReleaseView releaseView)
 		{
-			if (!IdxPlatformNames.TryGetValue(releaseView.ReleaseData.Platform, out Platform platform))
+			string platformName = releaseView.ReleaseData.Platform;
+			if (!IdxPlatformNames.TryGetValue(platformName, out Platform platform))
 			{
 				platform = new Platform()
 				{
-					Name = releaseView.ReleaseData.Platform,
+					Name = platformName,
 				};
-				IdxPlatformNames.Add(platform.Name, platform);
+				IdxPlatformNames.Add(platformName, platform);
 				Platforms.Add(platform);
 			}
-			platform.Releases.Add(releaseView);
+			if (!platform.Releases.ContainsKey(releaseView.Name))
+				platform.Releases.Add(releaseView.Name, releaseView);
 			releaseView.Platform = platform;
 			return platform;
 		}
@@ -89,7 +88,7 @@ namespace VideoGamesDB.Tabs
 				{
 					Name = releaseView.Name,
 				};
-				IdxGameNames.Add(gameTitle.Name, gameTitle);
+				IdxGameNames.Add(releaseView.Name, gameTitle);
 				Games.Add(gameTitle);
 			}
 			gameTitle.Releases.Add(releaseView);
@@ -149,7 +148,9 @@ namespace VideoGamesDB.Tabs
 	public class Platform
 	{
 		public string Name { get; set; }
-		public List<ReleaseView> Releases { get; set; } = new List<ReleaseView>();
+		[Hidden]
+		public SortedDictionary<string, ReleaseView> Releases { get; set; } = new SortedDictionary<string, ReleaseView>();
+		public List<ReleaseView> Items => Releases.Values.ToList();
 
 		public override string ToString() => Name;
 	}
