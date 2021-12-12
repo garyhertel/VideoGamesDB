@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2026
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VideoGamesDB.Tabs", "Libraries\VideoGamesDB.Tabs\VideoGamesDB.Tabs.csproj", "{61EB0F1B-58EC-48A8-8C67-8A3C1436FC22}"
 EndProject
@@ -42,6 +42,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atlas.Tabs.Test", "Imports\Atlas\Libraries\Atlas.Tabs.Test\Atlas.Tabs.Test.csproj", "{AA65E6CD-11CB-488B-9183-B0AE4147293D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atlas.Tabs.Tools", "Imports\Atlas\Libraries\Atlas.Tabs.Tools\Atlas.Tabs.Tools.csproj", "{CB1554FD-B563-4E6C-B0E7-53663ECF502F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atlas.UI.Avalonia.Charts", "Imports\Atlas\Libraries\Atlas.UI.Avalonia.Charts\Atlas.UI.Avalonia.Charts.csproj", "{13283762-6CCD-41FF-B3E6-6DF6C07289C8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atlas.UI.Avalonia.ScreenCapture", "Imports\Atlas\Libraries\Atlas.UI.Avalonia.ScreenCapture\Atlas.UI.Avalonia.ScreenCapture.csproj", "{8487EB2B-A119-4D45-9562-648FFB94A129}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -122,6 +126,18 @@ Global
 		{CB1554FD-B563-4E6C-B0E7-53663ECF502F}.DebugX86|Any CPU.Build.0 = DebugX86|Any CPU
 		{CB1554FD-B563-4E6C-B0E7-53663ECF502F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB1554FD-B563-4E6C-B0E7-53663ECF502F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13283762-6CCD-41FF-B3E6-6DF6C07289C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13283762-6CCD-41FF-B3E6-6DF6C07289C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13283762-6CCD-41FF-B3E6-6DF6C07289C8}.DebugX86|Any CPU.ActiveCfg = Debug|Any CPU
+		{13283762-6CCD-41FF-B3E6-6DF6C07289C8}.DebugX86|Any CPU.Build.0 = Debug|Any CPU
+		{13283762-6CCD-41FF-B3E6-6DF6C07289C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13283762-6CCD-41FF-B3E6-6DF6C07289C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8487EB2B-A119-4D45-9562-648FFB94A129}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8487EB2B-A119-4D45-9562-648FFB94A129}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8487EB2B-A119-4D45-9562-648FFB94A129}.DebugX86|Any CPU.ActiveCfg = Debug|Any CPU
+		{8487EB2B-A119-4D45-9562-648FFB94A129}.DebugX86|Any CPU.Build.0 = Debug|Any CPU
+		{8487EB2B-A119-4D45-9562-648FFB94A129}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8487EB2B-A119-4D45-9562-648FFB94A129}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -142,6 +158,8 @@ Global
 		{9180288B-0488-4F66-98EC-E2D73C141B2F} = {6E95ACC0-3C1A-433F-B1BD-3A498AC09695}
 		{AA65E6CD-11CB-488B-9183-B0AE4147293D} = {D27039B8-2F73-44C2-B789-F2698988BC74}
 		{CB1554FD-B563-4E6C-B0E7-53663ECF502F} = {D27039B8-2F73-44C2-B789-F2698988BC74}
+		{13283762-6CCD-41FF-B3E6-6DF6C07289C8} = {D27039B8-2F73-44C2-B789-F2698988BC74}
+		{8487EB2B-A119-4D45-9562-648FFB94A129} = {D27039B8-2F73-44C2-B789-F2698988BC74}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {60F07A73-547D-492E-97CE-C10125FABD15}

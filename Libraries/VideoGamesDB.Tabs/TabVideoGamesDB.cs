@@ -2,6 +2,7 @@
 using Atlas.Tabs;
 using Atlas.Tabs.Test;
 using Atlas.UI.Avalonia.Controls;
+using System.Collections.Generic;
 
 namespace VideoGamesDB.Tabs
 {
@@ -17,7 +18,7 @@ namespace VideoGamesDB.Tabs
 			{
 				LoadDatabase(call);
 
-				model.Items = new ItemCollection<ListItem>()
+				model.Items = new List<ListItem>()
 				{
 					//new ListItem("Platforms", new TabPlatforms()),
 					new ListItem("Database", new TabDatabase(Database)),

@@ -1,10 +1,13 @@
 ﻿
+using Atlas.Core;
+
 namespace VideoGamesDB.Tabs
 {
 	public class ReleaseView
 	{
 		public ReleaseData ReleaseData;
 
+		[AutoSize]
 		public GameTitle Title { get; set; }
 		public Platform Platform { get; set; } // use serializer converters instead?
 		public Genre Genre { get; set; }

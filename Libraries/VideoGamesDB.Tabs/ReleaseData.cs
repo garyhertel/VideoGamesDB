@@ -44,11 +44,10 @@ namespace VideoGamesDB.Tabs
 
 			public void Load(Call call)
 			{
-				using (var reader = new StreamReader(Filename))
-				using (var csv = new CsvReader(reader))
-				{
-					Items = csv.GetRecords<ReleaseData>().ToList();
-				}
+				using var reader = new StreamReader(Filename);
+				using var csv = new CsvReader(reader);
+				
+				Items = csv.GetRecords<ReleaseData>().ToList();
 			}
 		}
 	}

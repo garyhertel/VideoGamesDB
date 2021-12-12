@@ -1,5 +1,6 @@
 ﻿using Atlas.Core;
 using Atlas.Tabs;
+using System.Collections.Generic;
 
 namespace VideoGamesDB.Tabs
 {
@@ -25,7 +26,7 @@ namespace VideoGamesDB.Tabs
 
 			public override void Load(Call call, TabModel model)
 			{
-				model.Items = new ItemCollection<ListItem>()
+				model.Items = new List<ListItem>()
 				{
 					new ListItem("Platforms", GetPlatformChart()),
 					new ListItem("Publisher", GetPublisherChart()),
@@ -40,7 +41,10 @@ namespace VideoGamesDB.Tabs
 				{
 					XBinSize = 1,
 				};
-				listGroup.AddDimensions(Tab.Database.ReleaseViews, nameof(ReleaseView.Platform), nameof(ReleaseView.YearOfRelease), nameof(ReleaseView.Global_Sales));
+				listGroup.AddDimensions(Tab.Database.ReleaseViews,
+					nameof(ReleaseView.Platform),
+					nameof(ReleaseView.YearOfRelease),
+					nameof(ReleaseView.Global_Sales));
 
 				var chartSettings = new ChartSettings(listGroup);
 				var model = new TabModel()
@@ -57,7 +61,10 @@ namespace VideoGamesDB.Tabs
 				{
 					XBinSize = 1,
 				};
-				listGroup.AddDimensions(Tab.Database.ReleaseViews, nameof(ReleaseView.Publisher), nameof(ReleaseView.YearOfRelease), nameof(ReleaseView.Global_Sales));
+				listGroup.AddDimensions(Tab.Database.ReleaseViews, 
+					nameof(ReleaseView.Publisher),
+					nameof(ReleaseView.YearOfRelease),
+					nameof(ReleaseView.Global_Sales));
 
 				var chartSettings = new ChartSettings(listGroup);
 				var model = new TabModel()
@@ -74,7 +81,10 @@ namespace VideoGamesDB.Tabs
 				{
 					XBinSize = 1,
 				};
-				listGroup.AddDimensions(Tab.Database.ReleaseViews, nameof(ReleaseView.Developer), nameof(ReleaseView.YearOfRelease), nameof(ReleaseView.Global_Sales));
+				listGroup.AddDimensions(Tab.Database.ReleaseViews,
+					nameof(ReleaseView.Developer),
+					nameof(ReleaseView.YearOfRelease),
+					nameof(ReleaseView.Global_Sales));
 
 				var chartSettings = new ChartSettings(listGroup);
 				var model = new TabModel()
