@@ -1,28 +1,27 @@
-﻿using Atlas.Tabs;
+using Atlas.Tabs;
 using Atlas.UI.Avalonia;
 using Atlas.UI.Avalonia.Charts;
 using Atlas.UI.Avalonia.ScreenCapture;
 using System;
 using VideoGamesDB.Tabs;
 
-namespace VideoGamesDB.Start.Avalonia
+namespace VideoGamesDB.Start.Avalonia;
+
+public class MainWindow : BaseWindow
 {
-	public class MainWindow : BaseWindow
+	public MainWindow() : base(new Project(Settings))
 	{
-		public MainWindow() : base(new Project(Settings))
-		{
-			AddTab(new TabVideoGamesDB());
+		AddTab(new TabVideoGamesDB());
 
-			ChartGroupControl.Register();
-			ScreenCapture.AddControlTo(TabViewer);
-		}
-
-		public static ProjectSettings Settings => new ProjectSettings()
-		{
-			Name = "VideoGamesDB",
-			LinkType = "VideoGamesDB",
-			Version = new Version(1, 0),
-			DataVersion = new Version(1, 0),
-		};
+		ChartGroupControl.Register();
+		ScreenCapture.AddControlTo(TabViewer);
 	}
+
+	public static ProjectSettings Settings => new()
+	{
+		Name = "VideoGamesDB",
+		LinkType = "VideoGamesDB",
+		Version = new Version(1, 0),
+		DataVersion = new Version(1, 0),
+	};
 }

@@ -1,121 +1,120 @@
-﻿using Atlas.Core;
+using Atlas.Core;
 using Atlas.Tabs;
 using System.Collections.Generic;
 
-namespace VideoGamesDB.Tabs
-{
-	public class TabVideoGameCharts : ITab
-	{
-		public Database Database;
+namespace VideoGamesDB.Tabs;
 
-		public TabVideoGameCharts(Database database)
+public class TabVideoGameCharts : ITab
+{
+	public Database Database;
+
+	public TabVideoGameCharts(Database database)
+	{
+		Database = database;
+	}
+
+	public TabInstance Create() => new Instance(this);
+
+	public class Instance : TabInstance
+	{
+		private readonly TabVideoGameCharts Tab;
+
+		public Instance(TabVideoGameCharts tab)
 		{
-			Database = database;
+			Tab = tab;
 		}
 
-		public TabInstance Create() => new Instance(this);
-
-		public class Instance : TabInstance
+		public override void Load(Call call, TabModel model)
 		{
-			private TabVideoGameCharts Tab;
-
-			public Instance(TabVideoGameCharts tab)
+			model.Items = new List<ListItem>()
 			{
-				Tab = tab;
-			}
+				new("Platforms", GetPlatformChart()),
+				new("Publisher", GetPublisherChart()),
+				new("Developer", GetDeveloperChart()),
+				new("Sales", GetSalesChart()),
+			};
+		}
 
-			public override void Load(Call call, TabModel model)
+		private object GetPlatformChart()
+		{
+			var listGroup = new ListGroup("Sales by Platform")
 			{
-				model.Items = new List<ListItem>()
-				{
-					new ListItem("Platforms", GetPlatformChart()),
-					new ListItem("Publisher", GetPublisherChart()),
-					new ListItem("Developer", GetDeveloperChart()),
-					new ListItem("Sales", GetSalesChart()),
-				};
-			}
+				XBinSize = 1,
+			};
+			listGroup.AddDimensions(Tab.Database.ReleaseViews,
+				nameof(ReleaseView.Platform),
+				nameof(ReleaseView.YearOfRelease),
+				nameof(ReleaseView.Global_Sales));
 
-			private object GetPlatformChart()
+			var chartSettings = new ChartSettings(listGroup);
+			var model = new TabModel()
 			{
-				var listGroup = new ListGroup("Sales by Platform")
-				{
-					XBinSize = 1,
-				};
-				listGroup.AddDimensions(Tab.Database.ReleaseViews,
-					nameof(ReleaseView.Platform),
-					nameof(ReleaseView.YearOfRelease),
-					nameof(ReleaseView.Global_Sales));
+				MinDesiredWidth = 1000,
+			};
+			model.AddObject(chartSettings);
+			return model;
+		}
 
-				var chartSettings = new ChartSettings(listGroup);
-				var model = new TabModel()
-				{
-					MinDesiredWidth = 1000,
-				};
-				model.AddObject(chartSettings);
-				return model;
-			}
-
-			private object GetPublisherChart()
+		private object GetPublisherChart()
+		{
+			var listGroup = new ListGroup("Sales by Publisher")
 			{
-				var listGroup = new ListGroup("Sales by Publisher")
-				{
-					XBinSize = 1,
-				};
-				listGroup.AddDimensions(Tab.Database.ReleaseViews, 
-					nameof(ReleaseView.Publisher),
-					nameof(ReleaseView.YearOfRelease),
-					nameof(ReleaseView.Global_Sales));
+				XBinSize = 1,
+			};
+			listGroup.AddDimensions(Tab.Database.ReleaseViews,
+				nameof(ReleaseView.Publisher),
+				nameof(ReleaseView.YearOfRelease),
+				nameof(ReleaseView.Global_Sales));
 
-				var chartSettings = new ChartSettings(listGroup);
-				var model = new TabModel()
-				{
-					MinDesiredWidth = 1000,
-				};
-				model.AddObject(chartSettings);
-				return model;
-			}
-
-			private object GetDeveloperChart()
+			var chartSettings = new ChartSettings(listGroup);
+			var model = new TabModel()
 			{
-				var listGroup = new ListGroup("Sales by Developer")
-				{
-					XBinSize = 1,
-				};
-				listGroup.AddDimensions(Tab.Database.ReleaseViews,
-					nameof(ReleaseView.Developer),
-					nameof(ReleaseView.YearOfRelease),
-					nameof(ReleaseView.Global_Sales));
+				MinDesiredWidth = 1000,
+			};
+			model.AddObject(chartSettings);
+			return model;
+		}
 
-				var chartSettings = new ChartSettings(listGroup);
-				var model = new TabModel()
-				{
-					MinDesiredWidth = 1000,
-				};
-				model.AddObject(chartSettings);
-				return model;
-			}
-
-			private object GetSalesChart()
+		private object GetDeveloperChart()
+		{
+			var listGroup = new ListGroup("Sales by Developer")
 			{
-				var listSeries = new ListSeries("Sales", Tab.Database.ReleaseViews, nameof(ReleaseView.YearOfRelease), nameof(ReleaseView.Global_Sales))
-				{
-					XBinSize = 1,
-					// Dimensions, allow selecting multiple
-					//yPropertyName = nameof(ReleaseData.Platform),
-					//yPropertyName = nameof(ReleaseData.Genre),
-					//yPropertyName = nameof(ReleaseData.Publisher),
-					//yPropertyName = nameof(ReleaseData.Developer),
-				};
-				var chartSettings = new ChartSettings();
-				chartSettings.AddSeries(listSeries);
-				//return chartSettings;
-				var model = new TabModel()
-				{
-					MinDesiredWidth = 1000,
-				};
-				model.AddObject(chartSettings);
-				return model;
-			}
+				XBinSize = 1,
+			};
+			listGroup.AddDimensions(Tab.Database.ReleaseViews,
+				nameof(ReleaseView.Developer),
+				nameof(ReleaseView.YearOfRelease),
+				nameof(ReleaseView.Global_Sales));
+
+			var chartSettings = new ChartSettings(listGroup);
+			var model = new TabModel()
+			{
+				MinDesiredWidth = 1000,
+			};
+			model.AddObject(chartSettings);
+			return model;
+		}
+
+		private object GetSalesChart()
+		{
+			var listSeries = new ListSeries("Sales", Tab.Database.ReleaseViews, nameof(ReleaseView.YearOfRelease), nameof(ReleaseView.Global_Sales))
+			{
+				XBinSize = 1,
+				// Dimensions, allow selecting multiple
+				//yPropertyName = nameof(ReleaseData.Platform),
+				//yPropertyName = nameof(ReleaseData.Genre),
+				//yPropertyName = nameof(ReleaseData.Publisher),
+				//yPropertyName = nameof(ReleaseData.Developer),
+			};
+			var chartSettings = new ChartSettings();
+			chartSettings.AddSeries(listSeries);
+			//return chartSettings;
+			var model = new TabModel()
+			{
+				MinDesiredWidth = 1000,
+			};
+			model.AddObject(chartSettings);
+			return model;
 		}
 	}
 }

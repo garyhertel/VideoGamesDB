@@ -1,24 +1,23 @@
-﻿using Avalonia;
+using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 
-namespace VideoGamesDB.Start.Avalonia
+namespace VideoGamesDB.Start.Avalonia;
+
+public class App : Application
 {
-    public class App : Application
-    {
-        public override void Initialize()
-        {
-            AvaloniaXamlLoader.Load(this);
-		}
+	public override void Initialize()
+	{
+		AvaloniaXamlLoader.Load(this);
+	}
 
-		public override void OnFrameworkInitializationCompleted()
-		{
-			if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktopLifetime)
-				desktopLifetime.MainWindow = new MainWindow();
-			//else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewLifetime)
-			//	singleViewLifetime.MainView = new MainView();
+	public override void OnFrameworkInitializationCompleted()
+	{
+		if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktopLifetime)
+			desktopLifetime.MainWindow = new MainWindow();
+		//else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewLifetime)
+		//	singleViewLifetime.MainView = new MainView();
 
-			base.OnFrameworkInitializationCompleted();
-		}
+		base.OnFrameworkInitializationCompleted();
 	}
 }

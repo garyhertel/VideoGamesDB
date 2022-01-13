@@ -1,40 +1,39 @@
-﻿using Atlas.Core;
+using Atlas.Core;
 using Atlas.Tabs;
 using Atlas.Tabs.Test;
 using Atlas.UI.Avalonia.Controls;
 using System.Collections.Generic;
 
-namespace VideoGamesDB.Tabs
+namespace VideoGamesDB.Tabs;
+
+public class TabVideoGamesDB : ITab
 {
-	public class TabVideoGamesDB : ITab
+	public TabInstance Create() => new Instance();
+
+	public class Instance : TabInstance
 	{
-		public TabInstance Create() => new Instance();
+		public Database Database;
 
-		public class Instance : TabInstance
+		public override void Load(Call call, TabModel model)
 		{
-			public Database Database;
+			LoadDatabase(call);
 
-			public override void Load(Call call, TabModel model)
+			model.Items = new List<ListItem>()
 			{
-				LoadDatabase(call);
+				//new("Platforms", new TabPlatforms()),
+				new("Database", new TabDatabase(Database)),
+				new("Charts", new TabVideoGameCharts(Database)),
+				new("Bookmarks", new TabBookmarks(Project)),
+				new("Test", new TabTest()),
+			};
+		}
 
-				model.Items = new List<ListItem>()
-				{
-					//new ListItem("Platforms", new TabPlatforms()),
-					new ListItem("Database", new TabDatabase(Database)),
-					new ListItem("Charts", new TabVideoGameCharts(Database)),
-					new ListItem("Bookmarks", new TabBookmarks(Project)),
-					new ListItem("Test", new TabTest()),
-				};
-			}
-
-			private void LoadDatabase(Call call)
-			{
-				Database = new Database();
-				var view = new ReleaseData.View();
-				view.Load(call);
-				Database.Load(view.Items);
-			}
+		private void LoadDatabase(Call call)
+		{
+			Database = new Database();
+			var view = new ReleaseData.View();
+			view.Load(call);
+			Database.Load(view.Items);
 		}
 	}
 }

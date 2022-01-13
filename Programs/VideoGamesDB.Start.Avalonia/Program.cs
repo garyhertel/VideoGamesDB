@@ -1,21 +1,20 @@
-﻿using Avalonia;
+using Avalonia;
 using OxyPlot.Avalonia;
 
-namespace VideoGamesDB.Start.Avalonia
+namespace VideoGamesDB.Start.Avalonia;
+
+class Program
 {
-	class Program
+	static int Main(string[] args)
 	{
-		static int Main(string[] args)
-		{
-			OxyPlotModule.EnsureLoaded();
-			AppBuilder builder = BuildAvaloniaApp();
+		OxyPlotModule.EnsureLoaded();
+		AppBuilder builder = BuildAvaloniaApp();
 
-			return builder.StartWithClassicDesktopLifetime(args);
-		}
-
-		public static AppBuilder BuildAvaloniaApp()
-			=> AppBuilder.Configure<App>()
-				.UsePlatformDetect()
-				.LogToTrace();
+		return builder.StartWithClassicDesktopLifetime(args);
 	}
+
+	public static AppBuilder BuildAvaloniaApp()
+		=> AppBuilder.Configure<App>()
+			.UsePlatformDetect()
+			.LogToTrace();
 }

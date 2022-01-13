@@ -1,40 +1,39 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Atlas.Core;
 using Atlas.Tabs;
 
-namespace VideoGamesDB.Tabs
-{
-	public class TabDatabase : ITab
-	{
-		public Database Database;
+namespace VideoGamesDB.Tabs;
 
-		public TabDatabase(Database database)
+public class TabDatabase : ITab
+{
+	public Database Database;
+
+	public TabDatabase(Database database)
+	{
+		Database = database;
+	}
+
+	public TabInstance Create() => new Instance(this);
+
+	public class Instance : TabInstance
+	{
+		public TabDatabase Tab;
+
+		public Instance(TabDatabase tab)
 		{
-			Database = database;
+			Tab = tab;
 		}
 
-		public TabInstance Create() => new Instance(this);
-
-		public class Instance : TabInstance
+		public override void Load(Call call, TabModel model)
 		{
-			public TabDatabase Tab;
+			model.AddData(Tab.Database);
 
-			public Instance(TabDatabase tab)
+			/*model.Items = new ItemCollection<ListItem>()
 			{
-				Tab = tab;
-			}
-
-			public override void Load(Call call, TabModel model)
-			{
-				model.AddData(Tab.Database);
-
-				/*model.Items = new ItemCollection<ListItem>()
-				{
-					//new ListItem("Platforms", new TabPlatforms()),
-					new ListItem("Database", database),
-				};*/
-			}
+				//new ListItem("Platforms", new TabPlatforms()),
+				new ListItem("Database", database),
+			};*/
 		}
 	}
 }
