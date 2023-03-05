@@ -1,7 +1,4 @@
 using Atlas.Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace VideoGamesDB.Tabs;
 
@@ -64,8 +61,8 @@ public class Database
 
 	private Platform AddPlatform(ReleaseView releaseView)
 	{
-		string platformName = releaseView.ReleaseData.Platform;
-		if (!IdxPlatformNames.TryGetValue(platformName, out Platform platform))
+		string platformName = releaseView.ReleaseData!.Platform!;
+		if (!IdxPlatformNames.TryGetValue(platformName, out Platform? platform))
 		{
 			platform = new Platform()
 			{
@@ -74,21 +71,21 @@ public class Database
 			IdxPlatformNames.Add(platformName, platform);
 			Platforms.Add(platform);
 		}
-		if (!platform.Releases.ContainsKey(releaseView.Name))
-			platform.Releases.Add(releaseView.Name, releaseView);
+		if (!platform.Releases.ContainsKey(releaseView.Name!))
+			platform.Releases.Add(releaseView.Name!, releaseView);
 		releaseView.Platform = platform;
 		return platform;
 	}
 
 	private GameTitle AddTitle(ReleaseView releaseView)
 	{
-		if (!IdxGameNames.TryGetValue(releaseView.Name, out GameTitle gameTitle))
+		if (!IdxGameNames.TryGetValue(releaseView.Name!, out GameTitle? gameTitle))
 		{
 			gameTitle = new GameTitle()
 			{
 				Name = releaseView.Name,
 			};
-			IdxGameNames.Add(releaseView.Name, gameTitle);
+			IdxGameNames.Add(releaseView.Name!, gameTitle);
 			Games.Add(gameTitle);
 		}
 		gameTitle.Releases.Add(releaseView);
@@ -98,13 +95,13 @@ public class Database
 
 	private Publisher AddPublisher(ReleaseView releaseView)
 	{
-		if (!IdxPublisherNames.TryGetValue(releaseView.ReleaseData.Publisher, out Publisher publisher))
+		if (!IdxPublisherNames.TryGetValue(releaseView.ReleaseData!.Publisher!, out Publisher? publisher))
 		{
 			publisher = new Publisher()
 			{
 				Name = releaseView.ReleaseData.Publisher,
 			};
-			IdxPublisherNames.Add(publisher.Name, publisher);
+			IdxPublisherNames.Add(publisher.Name!, publisher);
 			Publishers.Add(publisher);
 		}
 		publisher.Releases.Add(releaseView);
@@ -114,13 +111,13 @@ public class Database
 
 	private Developer AddDeveloper(ReleaseView releaseView)
 	{
-		if (!IdxDeveloperNames.TryGetValue(releaseView.ReleaseData.Developer, out Developer developer))
+		if (!IdxDeveloperNames.TryGetValue(releaseView.ReleaseData!.Developer!, out Developer? developer))
 		{
 			developer = new Developer()
 			{
 				Name = releaseView.ReleaseData.Developer,
 			};
-			IdxDeveloperNames.Add(developer.Name, developer);
+			IdxDeveloperNames.Add(developer.Name!, developer);
 			Developers.Add(developer);
 		}
 		developer.Releases.Add(releaseView);
@@ -130,13 +127,13 @@ public class Database
 
 	private Genre AddGenre(ReleaseView releaseView)
 	{
-		if (!IdxGenreNames.TryGetValue(releaseView.ReleaseData.Genre, out Genre genre))
+		if (!IdxGenreNames.TryGetValue(releaseView.ReleaseData!.Genre!, out Genre? genre))
 		{
 			genre = new Genre()
 			{
 				Name = releaseView.ReleaseData.Genre,
 			};
-			IdxGenreNames.Add(genre.Name, genre);
+			IdxGenreNames.Add(genre.Name!, genre);
 			Genres.Add(genre);
 		}
 		genre.Releases.Add(releaseView);
@@ -147,45 +144,45 @@ public class Database
 
 public class Platform
 {
-	public string Name { get; set; }
+	public string? Name { get; set; }
 	[Hidden]
 	public SortedDictionary<string, ReleaseView> Releases { get; set; } = new();
 	public List<ReleaseView> Items => Releases.Values.ToList();
 
-	public override string ToString() => Name;
+	public override string? ToString() => Name;
 }
 
 public class GameTitle
 {
-	public string Name { get; set; }
+	public string? Name { get; set; }
 	public List<ReleaseView> Releases { get; set; } = new();
 
-	public override string ToString() => Name;
+	public override string? ToString() => Name;
 }
 
 public class Publisher
 {
-	public string Name { get; set; }
+	public string? Name { get; set; }
 	public HashSet<GameTitle> Titles { get; set; } = new();
 	public List<ReleaseView> Releases { get; set; } = new();
 
-	public override string ToString() => Name;
+	public override string? ToString() => Name;
 }
 
 public class Developer
 {
-	public string Name { get; set; }
+	public string? Name { get; set; }
 	public HashSet<GameTitle> Titles { get; set; } = new();
 	public List<ReleaseView> Releases { get; set; } = new();
 
-	public override string ToString() => Name;
+	public override string? ToString() => Name;
 }
 
 public class Genre
 {
-	public string Name { get; set; }
+	public string? Name { get; set; }
 	public HashSet<GameTitle> Titles { get; set; } = new();
 	public List<ReleaseView> Releases { get; set; } = new();
 
-	public override string ToString() => Name;
+	public override string? ToString() => Name;
 }

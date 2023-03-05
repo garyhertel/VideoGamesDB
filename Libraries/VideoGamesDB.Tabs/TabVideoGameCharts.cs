@@ -1,6 +1,5 @@
 using Atlas.Core;
 using Atlas.Tabs;
-using System.Collections.Generic;
 
 namespace VideoGamesDB.Tabs;
 

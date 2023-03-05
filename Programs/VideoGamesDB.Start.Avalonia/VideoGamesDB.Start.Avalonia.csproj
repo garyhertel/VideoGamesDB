@@ -4,6 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
     <Configurations>Debug;Release;DebugX86</Configurations>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
     <ApplicationIcon />
     <StartupObject />
   </PropertyGroup>
