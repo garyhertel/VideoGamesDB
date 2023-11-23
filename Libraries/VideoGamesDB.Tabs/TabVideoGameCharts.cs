@@ -36,61 +36,58 @@ public class TabVideoGameCharts : ITab
 
 		private object GetPlatformChart()
 		{
-			var listGroup = new ListGroup("Sales by Platform")
+			var chartView = new ChartView("Sales by Platform")
 			{
 				XBinSize = 1,
 			};
-			listGroup.AddDimensions(Tab.Database.ReleaseViews,
-				nameof(ReleaseView.Platform),
+			chartView.AddDimensions(Tab.Database.ReleaseViews,
 				nameof(ReleaseView.YearOfRelease),
-				nameof(ReleaseView.Global_Sales));
+				nameof(ReleaseView.Global_Sales),
+				nameof(ReleaseView.Platform));
 
-			var chartSettings = new ChartSettings(listGroup);
 			var model = new TabModel()
 			{
 				MinDesiredWidth = 1000,
 			};
-			model.AddObject(chartSettings);
+			model.AddObject(chartView);
 			return model;
 		}
 
 		private object GetPublisherChart()
 		{
-			var listGroup = new ListGroup("Sales by Publisher")
+			var chartView = new ChartView("Sales by Publisher")
 			{
 				XBinSize = 1,
 			};
-			listGroup.AddDimensions(Tab.Database.ReleaseViews,
-				nameof(ReleaseView.Publisher),
+			chartView.AddDimensions(Tab.Database.ReleaseViews,
 				nameof(ReleaseView.YearOfRelease),
-				nameof(ReleaseView.Global_Sales));
+				nameof(ReleaseView.Global_Sales),
+				nameof(ReleaseView.Publisher));
 
-			var chartSettings = new ChartSettings(listGroup);
 			var model = new TabModel()
 			{
 				MinDesiredWidth = 1000,
 			};
-			model.AddObject(chartSettings);
+			model.AddObject(chartView);
 			return model;
 		}
 
 		private object GetDeveloperChart()
 		{
-			var listGroup = new ListGroup("Sales by Developer")
+			var chartView = new ChartView("Sales by Developer")
 			{
 				XBinSize = 1,
 			};
-			listGroup.AddDimensions(Tab.Database.ReleaseViews,
-				nameof(ReleaseView.Developer),
+			chartView.AddDimensions(Tab.Database.ReleaseViews,
 				nameof(ReleaseView.YearOfRelease),
-				nameof(ReleaseView.Global_Sales));
+				nameof(ReleaseView.Global_Sales),
+				nameof(ReleaseView.Developer));
 
-			var chartSettings = new ChartSettings(listGroup);
 			var model = new TabModel()
 			{
 				MinDesiredWidth = 1000,
 			};
-			model.AddObject(chartSettings);
+			model.AddObject(chartView);
 			return model;
 		}
 
@@ -105,14 +102,14 @@ public class TabVideoGameCharts : ITab
 				//yPropertyName = nameof(ReleaseData.Publisher),
 				//yPropertyName = nameof(ReleaseData.Developer),
 			};
-			var chartSettings = new ChartSettings();
-			chartSettings.AddSeries(listSeries);
+			var chartView = new ChartView();
+			chartView.Series.Add(listSeries);
 			//return chartSettings;
 			var model = new TabModel()
 			{
 				MinDesiredWidth = 1000,
 			};
-			model.AddObject(chartSettings);
+			model.AddObject(chartView);
 			return model;
 		}
 	}
