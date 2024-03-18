@@ -1,6 +1,5 @@
 using Atlas.Tabs;
 using Atlas.UI.Avalonia;
-using Atlas.UI.Avalonia.Charts;
 using Atlas.UI.Avalonia.Charts.LiveCharts;
 using Atlas.UI.Avalonia.ScreenCapture;
 using VideoGamesDB.Tabs;
