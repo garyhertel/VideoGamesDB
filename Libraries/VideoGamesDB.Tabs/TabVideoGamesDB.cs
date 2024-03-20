@@ -1,8 +1,8 @@
 using Atlas.Core;
 using Atlas.Tabs;
 using Atlas.Tabs.Test;
-using Atlas.Tabs.Tools;
 using Atlas.UI.Avalonia.Controls;
+using Atlas.UI.Avalonia.Tabs;
 
 namespace VideoGamesDB.Tabs;
 
