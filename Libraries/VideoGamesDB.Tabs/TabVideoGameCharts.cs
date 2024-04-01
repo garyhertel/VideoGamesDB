@@ -3,25 +3,15 @@ using Atlas.Tabs;
 
 namespace VideoGamesDB.Tabs;
 
-public class TabVideoGameCharts : ITab
+public class TabVideoGameCharts(Database database) : ITab
 {
-	public Database Database;
-
-	public TabVideoGameCharts(Database database)
-	{
-		Database = database;
-	}
+	public Database Database = database;
 
 	public TabInstance Create() => new Instance(this);
 
-	public class Instance : TabInstance
+	public class Instance(TabVideoGameCharts tab) : TabInstance
 	{
-		private readonly TabVideoGameCharts Tab;
-
-		public Instance(TabVideoGameCharts tab)
-		{
-			Tab = tab;
-		}
+		private readonly TabVideoGameCharts Tab = tab;
 
 		public override void Load(Call call, TabModel model)
 		{

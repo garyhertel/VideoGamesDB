@@ -28,10 +28,10 @@ public class Database
 	[HiddenRow]
 	public SortedDictionary<string, Developer> IdxDeveloperNames { get; set; } = new();
 
-	public void Load(List<ReleaseData> Items)
+	public void Load(List<ReleaseData> items)
 	{
-		ReleaseDatas = Items;
-		foreach (ReleaseData releaseData in Items)
+		ReleaseDatas = items;
+		foreach (ReleaseData releaseData in items)
 		{
 			var releaseView = new ReleaseView(releaseData);
 			ReleaseViews.Add(releaseView);
