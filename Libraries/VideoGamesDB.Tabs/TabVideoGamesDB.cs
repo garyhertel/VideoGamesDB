@@ -1,7 +1,6 @@
 using Atlas.Core;
 using Atlas.Tabs;
-using Atlas.Tabs.Test;
-using Atlas.UI.Avalonia.Controls;
+using Atlas.Tabs.Samples;
 using Atlas.UI.Avalonia.Tabs;
 
 namespace VideoGamesDB.Tabs;
@@ -25,7 +24,7 @@ public class TabVideoGamesDB : ITab
 				new("Charts", new TabVideoGameCharts(Database!)),
 				new("Links", new TabBookmarks(Project)),
 				new("Settings", new TabAvaloniaSettings()),
-				new("Test", new TabTest()),
+				new("Samples", new TabSamples()),
 			};
 		}
 

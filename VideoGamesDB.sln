@@ -33,7 +33,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{91
 		Imports\Database\Video_Games_Sales_as_at_22_Dec_2016.csv = Imports\Database\Video_Games_Sales_as_at_22_Dec_2016.csv
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atlas.Tabs.Test", "Imports\Atlas\Libraries\Atlas.Tabs.Test\Atlas.Tabs.Test.csproj", "{AA65E6CD-11CB-488B-9183-B0AE4147293D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atlas.Tabs.Samples", "Imports\Atlas\Libraries\Atlas.Tabs.Samples\Atlas.Tabs.Samples.csproj", "{AA65E6CD-11CB-488B-9183-B0AE4147293D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atlas.Tabs.Tools", "Imports\Atlas\Libraries\Atlas.Tabs.Tools\Atlas.Tabs.Tools.csproj", "{CB1554FD-B563-4E6C-B0E7-53663ECF502F}"
 EndProject
