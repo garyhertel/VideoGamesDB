@@ -34,7 +34,7 @@ public class ReleaseData
 		public const string ZipFilename = "video-game-sales-with-ratings.zip";
 		public const string Filename = "Assets/Video_Games_Sales_as_at_22_Dec_2016.csv";
 
-		public List<ReleaseData> Items { get; set; } = new();
+		public List<ReleaseData> Items { get; set; } = [];
 
 		public override string? ToString() => Items.Formatted();
 

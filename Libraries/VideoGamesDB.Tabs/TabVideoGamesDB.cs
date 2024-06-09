@@ -11,7 +11,7 @@ public class TabVideoGamesDB : ITab
 
 	public class Instance : TabInstance
 	{
-		public Database? Database;
+		private Database? _database;
 
 		public override void Load(Call call, TabModel model)
 		{
@@ -20,8 +20,8 @@ public class TabVideoGamesDB : ITab
 			model.Items = new List<ListItem>()
 			{
 				//new("Platforms", new TabPlatforms()),
-				new("Database", new TabDatabase(Database!)),
-				new("Charts", new TabVideoGameCharts(Database!)),
+				new("Database", new TabDatabase(_database!)),
+				new("Charts", new TabVideoGameCharts(_database!)),
 				new("Links", new TabBookmarks(Project)),
 				new("Settings", new TabAvaloniaSettings()),
 				new("Samples", new TabSamples()),
@@ -30,10 +30,10 @@ public class TabVideoGamesDB : ITab
 
 		private void LoadDatabase(Call call)
 		{
-			Database = new Database();
+			_database = new Database();
 			var view = new ReleaseData.View();
 			view.Load(call);
-			Database.Load(view.Items);
+			_database.Load(view.Items);
 		}
 	}
 }

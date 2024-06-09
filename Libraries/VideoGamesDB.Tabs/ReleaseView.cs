@@ -29,9 +29,7 @@ public class ReleaseView
 
 	public override string? ToString() => Name;
 
-	public ReleaseView()
-	{
-	}
+	public ReleaseView() { }
 
 	// todo: add a new Serializer Clone to SubType method?
 	// use property links without subtype instead?
@@ -40,6 +38,8 @@ public class ReleaseView
 		ReleaseData = releaseData;
 
 		if (int.TryParse(releaseData.Year_of_Release, out int year))
+		{
 			YearOfRelease = year;
+		}
 	}
 }

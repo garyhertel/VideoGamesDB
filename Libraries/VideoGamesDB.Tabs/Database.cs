@@ -4,29 +4,29 @@ namespace VideoGamesDB.Tabs;
 
 public class Database
 {
-	public List<GameTitle> Games { get; set; } = new();
+	public List<GameTitle> Games { get; set; } = [];
 	[HiddenRow]
-	public SortedDictionary<string, GameTitle> IdxGameNames { get; set; } = new();
+	public SortedDictionary<string, GameTitle> IdxGameNames { get; set; } = [];
 
-	public List<ReleaseData> ReleaseDatas { get; set; } = new();
+	public List<ReleaseData> ReleaseDatas { get; set; } = [];
 
-	public List<ReleaseView> ReleaseViews { get; set; } = new();
+	public List<ReleaseView> ReleaseViews { get; set; } = [];
 
-	public List<Platform> Platforms { get; set; } = new();
+	public List<Platform> Platforms { get; set; } = [];
 	[HiddenRow]
-	public SortedDictionary<string, Platform> IdxPlatformNames { get; set; } = new();
+	public SortedDictionary<string, Platform> IdxPlatformNames { get; set; } = [];
 
-	public List<Genre> Genres { get; set; } = new();
+	public List<Genre> Genres { get; set; } = [];
 	[HiddenRow]
-	public Dictionary<string, Genre> IdxGenreNames { get; set; } = new();
+	public Dictionary<string, Genre> IdxGenreNames { get; set; } = [];
 
-	public List<Publisher> Publishers { get; set; } = new();
+	public List<Publisher> Publishers { get; set; } = [];
 	[HiddenRow]
-	public SortedDictionary<string, Publisher> IdxPublisherNames { get; set; } = new();
+	public SortedDictionary<string, Publisher> IdxPublisherNames { get; set; } = [];
 
-	public List<Developer> Developers { get; set; } = new();
+	public List<Developer> Developers { get; set; } = [];
 	[HiddenRow]
-	public SortedDictionary<string, Developer> IdxDeveloperNames { get; set; } = new();
+	public SortedDictionary<string, Developer> IdxDeveloperNames { get; set; } = [];
 
 	public void Load(List<ReleaseData> items)
 	{
@@ -146,7 +146,7 @@ public class Platform
 {
 	public string? Name { get; set; }
 	[Hidden]
-	public SortedDictionary<string, ReleaseView> Releases { get; set; } = new();
+	public SortedDictionary<string, ReleaseView> Releases { get; set; } = [];
 	public List<ReleaseView> Items => Releases.Values.ToList();
 
 	public override string? ToString() => Name;
@@ -155,7 +155,7 @@ public class Platform
 public class GameTitle
 {
 	public string? Name { get; set; }
-	public List<ReleaseView> Releases { get; set; } = new();
+	public List<ReleaseView> Releases { get; set; } = [];
 
 	public override string? ToString() => Name;
 }
@@ -163,8 +163,8 @@ public class GameTitle
 public class Publisher
 {
 	public string? Name { get; set; }
-	public HashSet<GameTitle> Titles { get; set; } = new();
-	public List<ReleaseView> Releases { get; set; } = new();
+	public HashSet<GameTitle> Titles { get; set; } = [];
+	public List<ReleaseView> Releases { get; set; } = [];
 
 	public override string? ToString() => Name;
 }
@@ -172,8 +172,8 @@ public class Publisher
 public class Developer
 {
 	public string? Name { get; set; }
-	public HashSet<GameTitle> Titles { get; set; } = new();
-	public List<ReleaseView> Releases { get; set; } = new();
+	public HashSet<GameTitle> Titles { get; set; } = [];
+	public List<ReleaseView> Releases { get; set; } = [];
 
 	public override string? ToString() => Name;
 }
@@ -181,8 +181,8 @@ public class Developer
 public class Genre
 {
 	public string? Name { get; set; }
-	public HashSet<GameTitle> Titles { get; set; } = new();
-	public List<ReleaseView> Releases { get; set; } = new();
+	public HashSet<GameTitle> Titles { get; set; } = [];
+	public List<ReleaseView> Releases { get; set; } = [];
 
 	public override string? ToString() => Name;
 }

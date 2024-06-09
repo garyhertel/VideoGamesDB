@@ -12,8 +12,6 @@ public class TabVideoGameCharts(Database database) : ITab
 
 	public class Instance(TabVideoGameCharts tab) : TabInstance
 	{
-		private readonly TabVideoGameCharts Tab = tab;
-
 		public override void Load(Call call, TabModel model)
 		{
 			model.Items = new List<ListItem>()
@@ -31,7 +29,7 @@ public class TabVideoGameCharts(Database database) : ITab
 			{
 				XBinSize = 1,
 			};
-			chartView.AddDimensions(Tab.Database.ReleaseViews,
+			chartView.AddDimensions(tab.Database.ReleaseViews,
 				nameof(ReleaseView.YearOfRelease),
 				nameof(ReleaseView.Global_Sales),
 				nameof(ReleaseView.Platform));
@@ -50,7 +48,7 @@ public class TabVideoGameCharts(Database database) : ITab
 			{
 				XBinSize = 1,
 			};
-			chartView.AddDimensions(Tab.Database.ReleaseViews,
+			chartView.AddDimensions(tab.Database.ReleaseViews,
 				nameof(ReleaseView.YearOfRelease),
 				nameof(ReleaseView.Global_Sales),
 				nameof(ReleaseView.Publisher));
@@ -69,7 +67,7 @@ public class TabVideoGameCharts(Database database) : ITab
 			{
 				XBinSize = 1,
 			};
-			chartView.AddDimensions(Tab.Database.ReleaseViews,
+			chartView.AddDimensions(tab.Database.ReleaseViews,
 				nameof(ReleaseView.YearOfRelease),
 				nameof(ReleaseView.Global_Sales),
 				nameof(ReleaseView.Developer));
@@ -84,7 +82,7 @@ public class TabVideoGameCharts(Database database) : ITab
 
 		private object GetSalesChart()
 		{
-			var listSeries = new ListSeries("Sales", Tab.Database.ReleaseViews, nameof(ReleaseView.YearOfRelease), nameof(ReleaseView.Global_Sales))
+			var listSeries = new ListSeries("Sales", tab.Database.ReleaseViews, nameof(ReleaseView.YearOfRelease), nameof(ReleaseView.Global_Sales))
 			{
 				XBinSize = 1,
 				// Dimensions, allow selecting multiple
